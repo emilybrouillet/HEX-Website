@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Submit New Entry – Embodied Threat Matrix</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div id="header"></div>
+
+<main class="container">
+  <section class="panel">
+    <h1>Submit New Entry</h1>
+    <p>Select the tactic (row) and system layer (column) where your new threat or technique belongs.</p>
+
+    <form id="submitForm" style="margin-top:20px;">
+      <label for="row">Tactic (Row)</label><br>
+      <select id="row" required style="margin-bottom:16px; width:100%; max-width:400px;">
+        <option value="" disabled selected>Select a tactic</option>
+      </select><br>
+
+      <label for="column">Domain (Column)</label><br>
+      <select id="column" required style="margin-bottom:16px; width:100%; max-width:400px;">
+        <option value="" disabled selected>Select a domain</option>
+        <option value="social">Social Interface</option>
+        <option value="application">Application</option>
+        <option value="decision">Decision-making</option>
+        <option value="middleware">Middleware</option>
+        <option value="data">Data Processing</option>
+        <option value="sensing">Sensing & Perception</option>
+        <option value="physical">Physical</option>
+      </select><br>
+
+      <label for="entry">New Entry</label><br>
+      <textarea id="entry" rows="4" required style="width:100%; max-width:600px; margin-bottom:20px;"></textarea><br>
+
+      <button type="submit" class="add-btn">Submit</button>
+      <a href="index.html" class="add-btn" style="margin-left:10px;">← Back</a>
+    </form>
+
+    <p id="status" style="margin-top:20px; color:var(--purple-accent);"></p>
+  </section>
+</main>
+
+<script>
+  // Load header
+  fetch("header.html")
+          .then(res => res.text())
+          .then(html => document.getElementById("header").innerHTML = html);
+
+  // Load tactic names into dropdown
+  fetch("matrixData.js")
+          .then(res => res.text())
+          .then(js => {
+            eval(js); // Load matrixData.js into this context
+            const rowSelect = document.getElementById("row");
+            window.matrixData.forEach(r => {
+              const opt = document.createElement("option");
+              opt.value = r.tactic;
+              opt.textContent = r.tactic;
+              rowSelect.appendChild(opt);
+            });
+          });
+
+  document.getElementById("submitForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    const tactic = document.getElementById("row").value;
+    const col = document.getElementById("column").value;
+    const entry = document.getElementById("entry").value.trim();
+    if (!tactic || !col || !entry) return;
+
+    const res = await fetch("/api/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ tactic, column: col, entry })
+    });
+
+    const out = await res.json();
+    document.getElementById("status").textContent = out.message || out.error;
+    e.target.reset();
+  });
+
+</script>
+</body>
+</html>

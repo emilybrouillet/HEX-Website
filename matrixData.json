@@ -1,0 +1,142 @@
+[
+  {
+    "tactic": "Embodiment Preparation",
+    "social": "",
+    "application": [
+      "CI/CD Supply Chain Compromise",
+      "Sim-to-Real Discrepancy and Digital-Twin Overload"
+    ],
+    "decision": "Trojaned Pretrained Models and Supply Chain Threats",
+    "middleware": "",
+    "data": "",
+    "sensing": "",
+    "physical": "Field Tampering"
+  },
+  {
+    "tactic": "Embodied Access",
+    "social": "Trust Manipulation and Social Engineering",
+    "application": "Unauthenticated APIs and Remote Override",
+    "decision": "Malicious OTA Updates",
+    "middleware": "",
+    "data": "",
+    "sensing": "",
+    "physical": "Firmware Reflashing"
+  },
+  {
+    "tactic": "Behavior Invocation",
+    "social": "",
+    "application": "",
+    "decision": "",
+    "middleware": "Topic Spoofing and Participant Impersonation",
+    "data": "",
+    "sensing": "",
+    "physical": ""
+  },
+  {
+    "tactic": "Persistence",
+    "social": "",
+    "application": [
+      "Script and State-Machine Corruption",
+      "Runtime Parameter Tampering"
+    ],
+    "decision": [
+      "Concept Drift and Sensor Fusion Spoofing",
+      "Model Poisoning and Physical Backdoors",
+      "FSM Corruption and Logic Bombs",
+      "Control-Parameter Tampering",
+      "Planning Logic Manipulation",
+      "Federated Learning Poisoning"
+    ],
+    "middleware": "",
+    "data": "",
+    "sensing": "",
+    "physical": ""
+  },
+  {
+    "tactic": "Privilege Escalation",
+    "social": "",
+    "application": "",
+    "decision": "",
+    "middleware": "",
+    "data": [
+      "Memory-Safety Exploits",
+      "Race Conditions / TOCTOU"
+    ],
+    "sensing": "",
+    "physical": ""
+  },
+  {
+    "tactic": "Perception Manipulation",
+    "social": [
+      "Synthetic or Hidden Audio",
+      "Visual Spoofing and Adversarial Cues"
+    ],
+    "application": "",
+    "decision": "",
+    "middleware": "Replay and Stale Frame Injection",
+    "data": "Estimator-Bias Tampering",
+    "sensing": [
+      "Active Optical Spoofing",
+      "Sensor Blinding and Jamming",
+      "Resonant Ultrasound or EMI IMU Corruption",
+      "Physical Adversarial Patches"
+    ],
+    "physical": "Sensor Bias via Local Fields"
+  },
+  {
+    "tactic": "Embodied Data Harvesting",
+    "social": "Covert Audio / Visual Eavesdropping",
+    "application": "",
+    "decision": "",
+    "middleware": "",
+    "data": "",
+    "sensing": "Sensor-Based Privacy Leakage",
+    "physical": "Acoustic Side-Channels"
+  },
+  {
+    "tactic": "Lateral Movement",
+    "social": "Human-in-the-Loop Pivoting",
+    "application": "Infrastructure Pivoting",
+    "decision": "",
+    "middleware": [
+      "Robot-to-Robot Pivoting",
+      "Control-Plane Pivoting"
+    ],
+    "data": "",
+    "sensing": "",
+    "physical": ""
+  },
+  {
+    "tactic": "Behavioral Command & Control",
+    "social": "Inaudible and Line-of-Sight Command Injection",
+    "application": "",
+    "decision": "Reward Hacking and Specification Gaming",
+    "middleware": "",
+    "data": "",
+    "sensing": "",
+    "physical": ""
+  },
+  {
+    "tactic": "Physical or Operational Exfiltration",
+    "social": "",
+    "application": "",
+    "decision": "",
+    "middleware": "Plaintext Sniffing and Data Exfiltration",
+    "data": "",
+    "sensing": "",
+    "physical": ""
+  },
+  {
+    "tactic": "Embodied Impact",
+    "social": "",
+    "application": "",
+    "decision": [
+      "Adversarial Examples in Perception and Policy",
+      "Sequential Perturbation of Control Policies"
+    ],
+    "middleware": "Discovery-Abuse Denial-of-Service",
+    "data": "Timing Channel Interference",
+    "sensing": "",
+    "physical": "Power-Rail Manipulation"
+  }
+]

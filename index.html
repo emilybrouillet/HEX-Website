@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Embodied Threat Matrix</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div id="header"></div>
+
+<main class="container">
+    <section id="matrix">
+        <h1>Matrix</h1>
+        <p>A layered view of embodied-system attack surfaces across social, computational, and physical domains.</p>
+
+        <!-- Add Entry button -->
+        <div style="margin-bottom:12px;">
+            <a href="submit.html" class="add-btn">+ Add Entry</a>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr>
+                    <th>Tactic</th>
+                    <th>Social Interface</th>
+                    <th>Application</th>
+                    <th>Decision-making</th>
+                    <th>Middleware</th>
+                    <th>Data Processing</th>
+                    <th>Sensing &amp; Perception</th>
+                    <th>Physical</th>
+                </tr>
+                </thead>
+                <tbody id="matrix-body"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="notes" class="panel">
+        <h1>Notes</h1>
+        <p>This matrix is intended for threat modeling, research taxonomy, and red-team / blue-team alignment across embodied AI systems.</p>
+    </section>
+
+    <section id="contact" class="panel">
+        <h1>Contact</h1>
+        <p>Add an email, GitHub repository, or organization reference here.</p>
+    </section>
+</main>
+
+<!-- Header loader -->
+<script>
+    fetch("header.html")
+        .then(res => res.text())
+        .then(html => document.getElementById("header").innerHTML = html);
+</script>
+
+<script>
+    window.addEventListener("load", async () => {
+        try {
+            // Fetch matrix data from backend
+            const res = await fetch("/api/data");
+            if (!res.ok) throw new Error("Failed to fetch matrix data");
+            const matrixData = await res.json();
+            window.matrixData = matrixData;
+
+            const cols = ["social", "application", "decision", "middleware", "data", "sensing", "physical"];
+            const body = document.getElementById("matrix-body");
+
+            matrixData.forEach(row => {
+                const tr = document.createElement("tr");
+
+                // Tactic column
+                const tdTactic = document.createElement("td");
+                tdTactic.textContent = row.tactic;
+                tr.appendChild(tdTactic);
+
+                // Other columns
+                cols.forEach(key => {
+                    const td = document.createElement("td");
+                    const val = row[key];
+                    if (Array.isArray(val)) td.innerHTML = val.join("<br>");
+                    else td.innerHTML = val || "";
+                    tr.appendChild(td);
+                });
+
+                body.appendChild(tr);
+            });
+
+        } catch (err) {
+            console.error("Error loading matrix data:", err);
+        }
+    });
+</script>
+
+</body>
+</html>
