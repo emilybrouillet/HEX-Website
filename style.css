@@ -97,15 +97,10 @@ table{
 }
 
 thead th{
-    position:sticky;
-    top:var(--nav-h);
-    z-index:5;
-    background:linear-gradient(180deg,#1c0f3a,#150b2d);
-    color:var(--purple-accent);
-    vertical-align:top;
-    line-height:1.15;
-    padding:12px;
-    border-bottom:1px solid var(--border-soft);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: linear-gradient(180deg,#1c0f3a,#150b2d);
 }
 
 th, td{

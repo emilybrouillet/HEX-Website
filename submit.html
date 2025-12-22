@@ -13,12 +13,23 @@
 <main class="container">
   <section class="panel">
     <h1>Submit New Entry</h1>
-    <p>Select the tactic (row) and system layer (column) where your new threat or technique belongs.</p>
+    <p>Select the tactic (row) and system layer (column) where your new threat or technique belongs. Please include a descriptive justification in the 'Notes' section for proper review and to be considered for acceptance.</p>
 
     <form id="submitForm" style="margin-top:20px;">
       <label for="row">Tactic (Row)</label><br>
       <select id="row" required style="margin-bottom:16px; width:100%; max-width:400px;">
-        <option value="" disabled selected>Select a tactic</option>
+	<option value="" disabled selected>Select a tactic</option>
+	<option value="embodiment-preparation">Embodiment Preparation</option>
+        <option value="embodied-access">Embodied Access</option>
+	<option value="behavior-invocation">Behavior Invocation</option>
+	<option value="persistence">Persistence</option>
+	<option value="privilege-escalation">Privilege Escalation</option>
+	<option value="perception-manipulation">Perception Manipulation</option>
+	<option value="embodied-data-harvesting">Embodied Data Harvesting</option>
+	<option value="lateral-movement">Lateral Movement</option>
+	<option value="behavioral-c2">Behavioral Command & Control</option>
+	<option value="physical-exfiltrationt">Embodied Exfiltration</option>
+	<option value="embodied-impact">Embodied Impact</option>
       </select><br>
 
       <label for="column">Domain (Column)</label><br>
@@ -47,41 +58,49 @@
 <script>
   // Load header
   fetch("header.html")
-          .then(res => res.text())
-          .then(html => document.getElementById("header").innerHTML = html);
+    .then(res => res.text())
+    .then(html => document.getElementById("header").innerHTML = html);
 
-  // Load tactic names into dropdown
-  fetch("matrixData.js")
-          .then(res => res.text())
-          .then(js => {
-            eval(js); // Load matrixData.js into this context
-            const rowSelect = document.getElementById("row");
-            window.matrixData.forEach(r => {
-              const opt = document.createElement("option");
-              opt.value = r.tactic;
-              opt.textContent = r.tactic;
-              rowSelect.appendChild(opt);
-            });
-          });
-
-  document.getElementById("submitForm").addEventListener("submit", async e => {
+  document.getElementById("submitForm").addEventListener("submit", async (e) => {
     e.preventDefault();
-    const tactic = document.getElementById("row").value;
-    const col = document.getElementById("column").value;
-    const entry = document.getElementById("entry").value.trim();
-    if (!tactic || !col || !entry) return;
 
-    const res = await fetch("/api/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ tactic, column: col, entry })
-    });
+    const statusEl = document.getElementById("status");
+    statusEl.textContent = "";
 
-    const out = await res.json();
-    document.getElementById("status").textContent = out.message || out.error;
-    e.target.reset();
+    const tacticId = document.getElementById("row").value;
+    const column = document.getElementById("column").value;
+    const entry = (document.getElementById("entry").value || "").trim();
+
+    if (!tacticId || !column || !entry) {
+      statusEl.textContent = "Please complete all fields.";
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ tacticId, column, entry })
+      });
+
+      const contentType = res.headers.get("content-type") || "";
+      const out = contentType.includes("application/json")
+        ? await res.json()
+        : { error: await res.text() };
+
+      if (!res.ok) {
+        statusEl.textContent = out.error || "Submission failed.";
+        return;
+      }
+
+      statusEl.textContent = out.message || "Submitted.";
+      e.target.reset();
+    } catch (err) {
+      console.error(err);
+      statusEl.textContent = "Network or server error.";
+    }
   });
-
 </script>
+
 </body>
 </html>

@@ -35,35 +35,36 @@ def get_data():
 @app.route('/api/submit', methods=['POST'])
 def submit_entry():
     data = load_data()
-    payload = request.get_json(force=True)
+    payload = request.get_json(force=True) or {}
 
-    tactic = payload.get('tactic')
+    tactic_id = payload.get('tacticId') or payload.get('tactic')  # supports old clients
     column = payload.get('column')
-    entry = payload.get('entry')
+    entry = (payload.get('entry') or '').strip()
 
-    if not all([tactic, column, entry]):
-        return jsonify({'error': 'Missing required fields'}), 400
+    VALID_COLUMNS = {"social", "application", "decision", "middleware", "data", "sensing", "physical"}
 
-    # Find the tactic
-    for row in data:
-        if row['tactic'] == tactic:
-            val = row.get(column)
-            if isinstance(val, list):
-                val.append(entry)
-            elif isinstance(val, str) and val:
-                row[column] = [val, entry]
-            else:
-                row[column] = [entry]
-            break
+    if not tactic_id or column not in VALID_COLUMNS or not entry:
+        return jsonify({'error': 'Missing or invalid fields'}), 400
+
+    # Find the row by id (not by tactic label)
+    row = next((r for r in data if r.get('id') == tactic_id), None)
+    if row is None:
+        # Do NOT create a new row; this indicates a mismatch in IDs
+        return jsonify({'error': f'Tactic id not found: {tactic_id}'}), 404
+
+    # Ensure the cell is a list, then append
+    cell = row.get(column, [])
+    if isinstance(cell, list):
+        cell.append(entry)
+        row[column] = cell
+    elif isinstance(cell, str) and cell.strip():
+        # migrate old string cell to list
+        row[column] = [cell.strip(), entry]
     else:
-        # Create new row if tactic not found
-        data.append({
-            'tactic': tactic,
-            column: [entry]
-        })
+        row[column] = [entry]
 
     save_data(data)
-    return jsonify({'status': 'ok', 'message': f'Added "{entry}" under {column} for {tactic}.'})
+    return jsonify({'status': 'ok', 'message': f'Added "{entry}" under {column} for {row.get("tactic", tactic_id)}.'})
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
