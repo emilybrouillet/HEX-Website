@@ -152,3 +152,12 @@ tbody td:first-child{
 .add-btn:hover {
     opacity:.85;
 }
+.entry-link {
+  color: var(--text-main);
+  text-decoration: none;
+  cursor: pointer;
+}
+.entry-link:hover {
+  text-decoration: underline;
+  color: var(--purple-accent);
+}

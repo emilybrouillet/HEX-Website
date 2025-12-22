@@ -13,7 +13,7 @@
 <main class="container">
   <section class="panel">
     <h1>Submit New Entry</h1>
-    <p>Select the tactic (row) and system layer (column) where your new threat or technique belongs. Please include a descriptive justification in the 'Notes' section for proper review and to be considered for acceptance.</p>
+    <p>Select the tactic (row) and system layer (column) where your new threat or technique belongs. Please include a descriptive justification in the 'Description' section for proper review and to be considered for acceptance.</p>
 
     <form id="submitForm" style="margin-top:20px;">
       <label for="row">Tactic (Row)</label><br>
@@ -44,8 +44,18 @@
         <option value="physical">Physical</option>
       </select><br>
 
-      <label for="entry">New Entry</label><br>
-      <textarea id="entry" rows="4" required style="width:100%; max-width:600px; margin-bottom:20px;"></textarea><br>
+      <label for="entry">Title</label><br>
+      <textarea id="entry" rows="4" required style="width:100%; max-width:600px; margin-bottom:20px;"
+	placeholder="Give the formal tactic name..."
+      ></textarea><br>
+
+      <label for="description">Description</label><br>
+      <textarea
+        id="description"
+        rows="5"
+        style="width:100%; max-width:600px; margin-bottom:20px;"
+        placeholder="Provide context, rationale, or technical detail for this entry..."
+      ></textarea><br>
 
       <button type="submit" class="add-btn">Submit</button>
       <a href="index.html" class="add-btn" style="margin-left:10px;">← Back</a>
@@ -61,8 +71,11 @@
     .then(res => res.text())
     .then(html => document.getElementById("header").innerHTML = html);
 
+  let isSubmitting = false;
+
   document.getElementById("submitForm").addEventListener("submit", async (e) => {
     e.preventDefault();
+    if (isSubmitting) return;
 
     const statusEl = document.getElementById("status");
     statusEl.textContent = "";
@@ -70,17 +83,20 @@
     const tacticId = document.getElementById("row").value;
     const column = document.getElementById("column").value;
     const entry = (document.getElementById("entry").value || "").trim();
+    const description = (document.getElementById("description").value || "").trim();
 
     if (!tacticId || !column || !entry) {
-      statusEl.textContent = "Please complete all fields.";
+      statusEl.textContent = "Please complete all required fields.";
       return;
     }
 
     try {
+      isSubmitting = true;
+
       const res = await fetch("/api/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ tacticId, column, entry })
+        body: JSON.stringify({ tacticId, column, entry, description })
       });
 
       const contentType = res.headers.get("content-type") || "";
@@ -98,9 +114,10 @@
     } catch (err) {
       console.error(err);
       statusEl.textContent = "Network or server error.";
+    } finally {
+      isSubmitting = false;
     }
   });
 </script>
-
 </body>
 </html>

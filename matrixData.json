@@ -4,36 +4,76 @@
     "tactic": "Embodiment Preparation",
     "social": [],
     "application": [
-      "CI/CD Supply Chain Compromise",
-      "Sim-to-Real Discrepancy and Digital-Twin Overload"
+      {
+        "id": "ci-cd-supply-chain-compromise",
+        "title": "CI/CD Supply Chain Compromise",
+        "description": "",
+        "notes": ""
+      },
+      {
+        "id": "sim-to-real-discrepancy-and-digital-twin-overload",
+        "title": "Sim-to-Real Discrepancy and Digital-Twin Overload",
+        "description": "",
+        "notes": ""
+      }
     ],
     "decision": [
-      "Trojaned Pretrained Models and Supply Chain Threats"
+      {
+        "id": "trojaned-pretrained-models-and-supply-chain-threats",
+        "title": "Trojaned Pretrained Models and Supply Chain Threats",
+        "description": "",
+        "notes": ""
+      }
     ],
     "middleware": [],
     "data": [],
     "sensing": [],
     "physical": [
-      "Field Tampering"
+      {
+        "id": "field-tampering",
+        "title": "Field Tampering",
+        "description": "",
+        "notes": ""
+      }
     ]
   },
   {
     "id": "embodied-access",
     "tactic": "Embodied Access",
     "social": [
-      "Trust Manipulation and Social Engineering"
+      {
+        "id": "trust-manipulation-and-social-engineering",
+        "title": "Trust Manipulation and Social Engineering",
+        "description": "",
+        "notes": ""
+      }
     ],
     "application": [
-      "Unauthenticated APIs and Remote Override"
+      {
+        "id": "unauthenticated-apis-and-remote-override",
+        "title": "Unauthenticated APIs and Remote Override",
+        "description": "",
+        "notes": ""
+      }
     ],
     "decision": [
-      "Malicious OTA Updates"
+      {
+        "id": "malicious-ota-updates",
+        "title": "Malicious OTA Updates",
+        "description": "",
+        "notes": ""
+      }
     ],
     "middleware": [],
     "data": [],
     "sensing": [],
     "physical": [
-      "Firmware Reflashing"
+      {
+        "id": "firmware-reflashing",
+        "title": "Firmware Reflashing",
+        "description": "",
+        "notes": ""
+      }
     ]
   },
   {
@@ -43,7 +83,12 @@
     "application": [],
     "decision": [],
     "middleware": [
-      "Topic Spoofing and Participant Impersonation"
+      {
+        "id": "topic-spoofing-and-participant-impersonation",
+        "title": "Topic Spoofing and Participant Impersonation",
+        "description": "",
+        "notes": ""
+      }
     ],
     "data": [],
     "sensing": [],
@@ -54,16 +99,56 @@
     "tactic": "Persistence",
     "social": [],
     "application": [
-      "Script and State-Machine Corruption",
-      "Runtime Parameter Tampering"
+      {
+        "id": "script-and-state-machine-corruption",
+        "title": "Script and State-Machine Corruption",
+        "description": "",
+        "notes": ""
+      },
+      {
+        "id": "runtime-parameter-tampering",
+        "title": "Runtime Parameter Tampering",
+        "description": "",
+        "notes": ""
+      }
     ],
     "decision": [
-      "Concept Drift and Sensor Fusion Spoofing",
-      "Model Poisoning and Physical Backdoors",
-      "FSM Corruption and Logic Bombs",
-      "Control-Parameter Tampering",
-      "Planning Logic Manipulation",
-      "Federated Learning Poisoning"
+      {
+        "id": "concept-drift-and-sensor-fusion-spoofing",
+        "title": "Concept Drift and Sensor Fusion Spoofing",
+        "description": "",
+        "notes": ""
+      },
+      {
+        "id": "model-poisoning-and-physical-backdoors",
+        "title": "Model Poisoning and Physical Backdoors",
+        "description": "",
+        "notes": ""
+      },
+      {
+        "id": "fsm-corruption-and-logic-bombs",
+        "title": "FSM Corruption and Logic Bombs",
+        "description": "",
+        "notes": ""
+      },
+      {
+        "id": "control-parameter-tampering",
+        "title": "Control-Parameter Tampering",
+        "description": "",
+        "notes": ""
+      },
+      {
+        "id": "planning-logic-manipulation",
+        "title": "Planning Logic Manipulation",
+        "description": "",
+        "notes": ""
+      },
+      {
+        "id": "federated-learning-poisoning",
+        "title": "Federated Learning Poisoning",
+        "description": "",
+        "notes": ""
+      }
     ],
     "middleware": [],
     "data": [],
@@ -78,8 +163,18 @@
     "decision": [],
     "middleware": [],
     "data": [
-      "Memory-Safety Exploits",
-      "Race Conditions / TOCTOU"
+      {
+        "id": "memory-safety-exploits",
+        "title": "Memory-Safety Exploits",
+        "description": "",
+        "notes": ""
+      },
+      {
+        "id": "race-conditions-tocou",
+        "title": "Race Conditions / TOCTOU",
+        "description": "",
+        "notes": ""
+      }
     ],
     "sensing": [],
     "physical": []
@@ -88,57 +183,137 @@
     "id": "perception-manipulation",
     "tactic": "Perception Manipulation",
     "social": [
-      "Synthetic or Hidden Audio",
-      "Visual Spoofing and Adversarial Cues"
+      {
+        "id": "synthetic-or-hidden-audio",
+        "title": "Synthetic or Hidden Audio",
+        "description": "",
+        "notes": ""
+      },
+      {
+        "id": "visual-spoofing-and-adversarial-cues",
+        "title": "Visual Spoofing and Adversarial Cues",
+        "description": "",
+        "notes": ""
+      }
     ],
     "application": [],
     "decision": [],
     "middleware": [
-      "Replay and Stale Frame Injection"
+      {
+        "id": "replay-and-stale-frame-injection",
+        "title": "Replay and Stale Frame Injection",
+        "description": "",
+        "notes": ""
+      }
     ],
     "data": [
-      "Estimator-Bias Tampering"
+      {
+        "id": "estimator-bias-tampering",
+        "title": "Estimator-Bias Tampering",
+        "description": "",
+        "notes": ""
+      }
     ],
     "sensing": [
-      "Active Optical Spoofing",
-      "Sensor Blinding and Jamming",
-      "Resonant Ultrasound or EMI IMU Corruption",
-      "Physical Adversarial Patches"
+      {
+        "id": "active-optical-spoofing",
+        "title": "Active Optical Spoofing",
+        "description": "",
+        "notes": ""
+      },
+      {
+        "id": "sensor-blinding-and-jamming",
+        "title": "Sensor Blinding and Jamming",
+        "description": "",
+        "notes": ""
+      },
+      {
+        "id": "resonant-ultrasound-or-emi-imu-corruption",
+        "title": "Resonant Ultrasound or EMI IMU Corruption",
+        "description": "",
+        "notes": ""
+      },
+      {
+        "id": "physical-adversarial-patches",
+        "title": "Physical Adversarial Patches",
+        "description": "",
+        "notes": ""
+      }
     ],
     "physical": [
-      "Sensor Bias via Local Fields"
+      {
+        "id": "sensor-bias-via-local-fields",
+        "title": "Sensor Bias via Local Fields",
+        "description": "",
+        "notes": ""
+      }
     ]
   },
   {
     "id": "embodied-data-harvesting",
     "tactic": "Embodied Data Harvesting",
     "social": [
-      "Covert Audio / Visual Eavesdropping"
+      {
+        "id": "covert-audio-visual-eavesdropping",
+        "title": "Covert Audio / Visual Eavesdropping",
+        "description": "",
+        "notes": ""
+      }
     ],
     "application": [],
     "decision": [],
     "middleware": [],
     "data": [],
     "sensing": [
-      "Sensor-Based Privacy Leakage"
+      {
+        "id": "sensor-based-privacy-leakage",
+        "title": "Sensor-Based Privacy Leakage",
+        "description": "",
+        "notes": ""
+      }
     ],
     "physical": [
-      "Acoustic Side-Channels"
+      {
+        "id": "acoustic-side-channels",
+        "title": "Acoustic Side-Channels",
+        "description": "",
+        "notes": ""
+      }
     ]
   },
   {
     "id": "lateral-movement",
     "tactic": "Lateral Movement",
     "social": [
-      "Human-in-the-Loop Pivoting"
+      {
+        "id": "human-in-the-loop-pivoting",
+        "title": "Human-in-the-Loop Pivoting",
+        "description": "",
+        "notes": ""
+      }
     ],
     "application": [
-      "Infrastructure Pivoting"
+      {
+        "id": "infrastructure-pivoting",
+        "title": "Infrastructure Pivoting",
+        "description": "",
+        "notes": ""
+      }
     ],
     "decision": [],
     "middleware": [
-      "Robot-to-Robot Pivoting",
-      "Control-Plane Pivoting"
+      {
+        "id": "robot-to-robot-pivoting",
+        "title": "Robot-to-Robot Pivoting",
+        "description": "",
+        "notes": ""
+      },
+      {
+        "id": "control-plane-pivoting",
+        "title": "Control-Plane Pivoting",
+        "description": "",
+        "notes": ""
+      }
     ],
     "data": [],
     "sensing": [],
@@ -148,11 +323,21 @@
     "id": "behavioral-c2",
     "tactic": "Behavioral Command & Control",
     "social": [
-      "Inaudible and Line-of-Sight Command Injection"
+      {
+        "id": "inaudible-and-line-of-sight-command-injection",
+        "title": "Inaudible and Line-of-Sight Command Injection",
+        "description": "",
+        "notes": ""
+      }
     ],
     "application": [],
     "decision": [
-      "Reward Hacking and Specification Gaming"
+      {
+        "id": "reward-hacking-and-specification-gaming",
+        "title": "Reward Hacking and Specification Gaming",
+        "description": "",
+        "notes": ""
+      }
     ],
     "middleware": [],
     "data": [],
@@ -166,7 +351,12 @@
     "application": [],
     "decision": [],
     "middleware": [
-      "Plaintext Sniffing and Data Exfiltration"
+      {
+        "id": "plaintext-sniffing-and-data-exfiltration",
+        "title": "Plaintext Sniffing and Data Exfiltration",
+        "description": "",
+        "notes": ""
+      }
     ],
     "data": [],
     "sensing": [],
@@ -178,18 +368,43 @@
     "social": [],
     "application": [],
     "decision": [
-      "Adversarial Examples in Perception and Policy",
-      "Sequential Perturbation of Control Policies"
+      {
+        "id": "adversarial-examples-in-perception-and-policy",
+        "title": "Adversarial Examples in Perception and Policy",
+        "description": "",
+        "notes": ""
+      },
+      {
+        "id": "sequential-perturbation-of-control-policies",
+        "title": "Sequential Perturbation of Control Policies",
+        "description": "",
+        "notes": ""
+      }
     ],
     "middleware": [
-      "Discovery-Abuse Denial-of-Service"
+      {
+        "id": "discovery-abuse-denial-of-service",
+        "title": "Discovery-Abuse Denial-of-Service",
+        "description": "",
+        "notes": ""
+      }
     ],
     "data": [
-      "Timing Channel Interference"
+      {
+        "id": "timing-channel-interference",
+        "title": "Timing Channel Interference",
+        "description": "",
+        "notes": ""
+      }
     ],
     "sensing": [],
     "physical": [
-      "Power-Rail Manipulation"
+      {
+        "id": "power-rail-manipulation",
+        "title": "Power-Rail Manipulation",
+        "description": "",
+        "notes": ""
+      }
     ]
   }
 ]

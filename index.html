@@ -81,7 +81,16 @@
                 cols.forEach(key => {
                     const td = document.createElement("td");
                     const val = row[key];
-                    if (Array.isArray(val)) td.innerHTML = val.join("<br>");
+                    if (Array.isArray(val)) {
+ 		 	val.forEach(entry => {
+    		        const link = document.createElement("a");
+   		 	link.href = `/entry.html?entryId=${encodeURIComponent(entry.id)}`;
+    			link.textContent = entry.title;
+    			link.className = "entry-link";
+    			td.appendChild(link);
+    			td.appendChild(document.createElement("br"));
+  	            });
+		    }
                     else td.innerHTML = val || "";
                     tr.appendChild(td);
                 });
