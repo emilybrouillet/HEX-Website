@@ -61,7 +61,7 @@
     window.addEventListener("load", async () => {
         try {
             // Fetch matrix data from backend
-            const res = await fetch("/api/data");
+            const res = await fetch("matrixData.json");
             if (!res.ok) throw new Error("Failed to fetch matrix data");
             const matrixData = await res.json();
             window.matrixData = matrixData;
